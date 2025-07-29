@@ -27,6 +27,7 @@ const secondChanceRoutes = require('./routes/secondChanceItemsRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const pinoHttp = require('pino-http');
 const logger = require('./logger');
+const authRoutes = require('./routes/authRoutes');
 
 app.use(pinoHttp({ logger }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use Routes
 app.use('/api/secondchance/items', secondChanceRoutes);
 app.use('/api/secondchance/search', searchRoutes);
+app.use('/api/auth', authRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
